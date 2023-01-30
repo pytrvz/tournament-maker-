@@ -12,7 +12,7 @@ public class evenTournament extends Tournament {
     /**
      * Creates all String pool identifiers to create a collection of Pool instances as attribute of the Tournament.
      *
-     * A 27 number based system is used to create a String pool identifier with ANCII chars. The fist Pool is "A",
+     * A 27 number based system is used to create a String pool identifier with ASCII chars. The fist Pool is "A",
      * the 26th pool is "Z", the 27th pool is "A@".
      *
      * @return Arraylist of tournament pools.

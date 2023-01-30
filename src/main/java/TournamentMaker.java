@@ -4,8 +4,8 @@ import java.util.Scanner;
 /**
  * @author petruz
  * @email 8olwerk@gmail.com
- * @version 1.1.1
- * Hardly any test provided. Complete edition required.
+ * @version 1.1.2
+ * Output tested but hardly any written unit-tests.
  */
 
 public abstract class TournamentMaker {

@@ -22,7 +22,7 @@ public class unevenTournament extends Tournament {
      * ASCII-order 64 (@) to 90 (Z). The first pool is pool A, the 27th pool is A@.
      *
      * <p>There is the potential issue currently of treating a match between two teams in the sister-pools as two
-     * seperate mathces.
+     * seperate matches.
      *
      * @return An Arraylist containing Pool objects in order. The last two pools are of uneven size.
      */
@@ -33,7 +33,7 @@ public class unevenTournament extends Tournament {
                 String poolID = "";
                 int j = i;
                 while (j > 0) {
-                    poolID = (char) (64+(j%base)) + poolID;;
+                    poolID = (char) (64+(j%base)) + poolID;
                     j /= base;
                 }
                 Pool p = new Pool(poolsize, poolID);
@@ -45,7 +45,7 @@ public class unevenTournament extends Tournament {
                 String poolID = "";
                 int j = i;
                 while (j > 0) {
-                    poolID = (char) (64+(j%base)) + poolID;;
+                    poolID = (char) (64+(j%base)) + poolID;
                     j /= base;
                 }
                 int index = numberOfPools+2==i ? 1 : 0;

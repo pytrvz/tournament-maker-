@@ -7,11 +7,11 @@ public class Match {
     /**
      * String identifying team one.
      */
-    private String teamOne;
+    private final String teamOne;
     /**
      * String identifying team two.
      */
-    private String teamTwo;
+    private final String teamTwo;
     /**
      * Boolean that is True when the match has been played, otherwise False.
      */
@@ -19,7 +19,7 @@ public class Match {
     /**
      * String to identify the match. The round and position in that round of certain pool is displayed.
      */
-    private String matchID;
+    private final String matchID;
     /**
      * An instance of Score initialized at the start of the match.
      */
@@ -36,7 +36,7 @@ public class Match {
      * A method for starting a match
      */
     public void startMatch() {
-        if (this.play == false) {
+        if (!this.play) {
             Score score = new Score(0, 0);
             this.play = true;
         }
@@ -48,7 +48,7 @@ public class Match {
      * @param two the score for team Two
      */
     public void changeScore(int one, int two) {
-        if (this.play == false) {
+        if (!this.play) {
             score.changeScore(new Score(one, two));
         }
     }
@@ -59,11 +59,11 @@ public class Match {
     private class Score {
         private int scoreTeamOne;
         private int scoreTeamTwo;
-        public Score(int i, int j) {
+        private Score(int i, int j) {
             this.scoreTeamOne = i;
             this.scoreTeamTwo = j;
         }
-        public void changeScore(Score other) {
+        private void changeScore(Score other) {
             this.scoreTeamOne += other.scoreTeamOne;
             this.scoreTeamTwo += other.scoreTeamTwo;
         }

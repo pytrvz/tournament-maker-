@@ -1,8 +1,5 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.*;
-import java.util.List;
+
 
 /**
  * Class for creating possible configurations of a tournament given an even number of participating teams.
@@ -16,11 +13,11 @@ public class TournamentOptions {
     /**
      * List that contains all combinations for pools of even and equal size.
      */
-    private List<List<Integer>> evenPoolcombinations = new ArrayList<>();
+    final private List<List<Integer>> evenPoolcombinations = new ArrayList<>();
     /**
-     * List that contains all combinations where the last two pools are not even and equal to eachother.
+     * List that contains all combinations where the last two pools are not even and equal to each other.
      */
-    private List<List<Integer>> unevenPoolcombinations = new ArrayList<>();
+    final private List<List<Integer>> unevenPoolcombinations = new ArrayList<>();
     /**
      * List that contains in order: the number of even-pool combinations and uneven-pool combinations.
      */
@@ -28,7 +25,7 @@ public class TournamentOptions {
     /**
      * The total number of possible configurations.
      */
-    private int numberOfTournamentOptions;
+    private final int numberOfTournamentOptions;
 
     public TournamentOptions(int numberParticipants) {
         this.numberParticipants = numberParticipants;
@@ -60,13 +57,13 @@ public class TournamentOptions {
     }
 
     /**
-     * Method for generating even combinations of poolsize and number of pools.
+     * Method for generating even combinations of pool-size and number of pools.
      *
      * <p>A set is created to get all combinations once and the configuration of having one
      * pool of all participants is added manually.
      *
      * <p>A functional interface is used to support a lambda function that is instrumental in
-     * pushing all possible combinations of poolsize and number of pools into the set.
+     * pushing all possible combinations of pool-size and number of pools into the set.
      *
      * <p>The number of participants is prime-factored. This list is concatenated to itself.
      * An on this list moving window is iterated each time in order to create all combinations
@@ -78,7 +75,7 @@ public class TournamentOptions {
      * <p>Tournament method postPoolRounds is subsequently used to add the possible number of rounds after
      * the pool phase is concluded.
      *
-     * @param numberParticipants
+     * @param numberParticipants the number of participants.
      */
     private void getEvenCombinations(int numberParticipants) {
 
@@ -97,8 +94,8 @@ public class TournamentOptions {
 
         for (int i = 0; i < primeFactors.size() / 2; i++) {
             for (int j = i + 1; j < i + primeFactors.size() / 2; j++) {
-                Integer numberPools = productDivisors.run(i, j);
-                Integer participantsPool = productDivisors.run(j, i + primeFactors.size() / 2);
+                int numberPools = productDivisors.run(i, j);
+                int participantsPool = productDivisors.run(j, i + primeFactors.size() / 2);
                 List<Integer> a = new ArrayList<>(Arrays.asList(numberPools, participantsPool));
                 if ((participantsPool&1)==0){
                     evenPoolCombo.add(a);
@@ -158,8 +155,8 @@ public class TournamentOptions {
     /**
      * Java lambda is used to find the minimum number of post-pool-rounds and the maximum number of post-pool-rounds
      *
-     * <p>To find the next power of 2, <a href>https://www.geeksforgeeks.org/smallest-power-of-2-greater-than-or-equal-to-n/</a>,
-     * by Anshika Goyal, was consulted. Subsequently these values are converted to log2 values. A simple while loop dividing
+     * <p>To find the next power of 2, "<a href="https://www.geeksforgeeks.org/smallest-power-of-2-greater-than-or-equal-to-n/">https://www.geeksforgeeks.org/smallest-power-of-2-greater-than-or-equal-to-n/</a>"
+     * by A. Goyal, was consulted. Subsequently these values are converted to log2 values. A simple while loop dividing
      * the number each time would have frankly obtained the same.</p>
      *
      * @param poolDimension Integer list containing the number of pools and the size of the pools.

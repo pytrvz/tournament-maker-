@@ -170,12 +170,6 @@ public class Pool {
                 System.out.println("Exception => " + e.getMessage());
             }
         }
-        for (Integer round : roundMatches.keySet()) {
-            int i = 1;
-            for (Match match : roundMatches.get(round)) {
-                i++;
-            }
-        }
     }
 
     /**
@@ -222,6 +216,7 @@ public class Pool {
      * A method for displaying the matches of a pool.
      * @return String displaying the pool-rounds and matches within those rounds.
      */
+    @Override
     public String toString() {
 
         String poolString = "\nPOOL " + poolID + "\n";
